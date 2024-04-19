@@ -1,0 +1,686 @@
+/* Basic Styles */
+:root {
+  --color-primary: rgb(193, 39, 45);
+  --color-secondary: rgb(233, 180, 182);
+  --color-accent: rgb(234, 166, 18);
+  --color-bg: rgb(0, 0, 0 )
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Typography */
+@font-face {
+  font-family: "opensans";
+  src: url("fonts/open-sans/opensans-bold-webfont.woff2") format("woff2"),
+    url("fonts/open-sans/opensans-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "opensans";
+  src: url("fonts/open-sans/opensans-regular-webfont.woff2") format("woff2"),
+    url("fonts/open-sans/opensans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "opensans";
+  src: url("fonts/open-sans/opensans-italic-webfont.woff2") format("woff2"),
+    url("fonts/open-sans/opensans-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: optional;
+}
+.Description {
+  font-weight: bold;
+}
+h1 {
+  font: "roboto", Arial, helvetica, sans-serif;
+  margin-bottom: 2rem;
+}
+p {
+  width: 150ch;
+  margin-top: 0;
+}
+html {
+  font-size: 62.5%;
+}
+.container-home {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  border: 3px solid rgb(255, 255, 255);
+  background-color: rgb(17, 17, 17);
+  background-size: cover;
+  background-position-y: -37rem;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c m"
+    "f f f f f f f f f f f f";
+}
+.header {
+  grid-area: h;
+  background: var(--color-accent);
+  background: linear-gradient(
+    90deg,
+    rgba(19, 18, 18, 0.75) 51%,
+    rgba(27, 26, 26, 0.75) 100%
+  );
+  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
+  top: 0;
+  height: 5rem;
+}
+.menu {
+  height: 90rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  margin-top: 8rem;
+  margin-right: 20rem;
+  margin-left: -20rem;
+  grid-area: m;
+  background-color: rgb(94, 93, 93);
+  border: 3px solid rgb(196, 196, 196);
+  background-size: cover;
+  border-radius: 10px;
+}
+.content {
+  grid-area: c;
+  padding-top: 1rem;
+}
+.footer {
+  grid-area: f;
+}
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  list-style-type: none;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+.nav-list a, li {
+  color: #000;
+  /* text-decoration: none; */
+  font-size: 1.8rem;
+  font-weight: 550;
+  font: "roboto", Arial, helvetica, sans-serif;
+}
+.nav-list li a:hover {
+  color: var(--color-primary);
+}
+.dblogo {
+  width: 5rem;
+  padding-top: .5rem;
+  transition: transform .2s;
+}
+.dblogo:hover {
+  cursor: pointer;
+  width: 5rem;
+  padding-top: .5rem;
+  transform:scale(1.06);
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
+.searchbar {
+  height: 3rem;
+  width: 60rem;
+  border-radius: 7px 0 0 7px;
+  background-color: rgba(31, 30, 30, 0.8);
+  border: 1px solid rgba(110, 110, 110, 0.8);
+  outline: 0;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  flex-grow: 1;
+  margin-left: 50rem;
+  color: rgb(158, 157, 157);
+}
+.searchbar:hover {
+  box-shadow: 0px 0px 3px 2px rgb(73, 73, 73);
+  transition: all 0.2s ease;
+  border: 100%;
+}
+.searchbar[type="text"]:focus {
+  box-shadow: 0px 0px 4px 3px var(--color-primary);
+  transition: all 0.2s ease;
+  border: 100%;
+  background-color: rgba(214, 214, 214, 0.8);
+  outline: 0;
+}
+.searchbar:focus::placeholder {
+  color: rgb(0, 0, 0);
+}
+/*Nav Bar Icons*/
+.magnifyingglass {
+  height: 2.4rem;
+  width: 3rem;
+  margin-top: .2rem;
+  margin-left: .7rem;
+}
+.search-button {
+  border-radius: 0px 7px 7px 0px;
+  background-color: rgba(56, 56, 56, 0.8);
+  border: 1px solid rgba(110, 110, 110, 0.8);
+  height: 3rem;
+  width: 3.8rem;
+  cursor: pointer;
+}
+.search-button:hover {
+  background-color: rgba(85, 84, 84, 0.8);
+}
+.login-button {
+  border-radius: 7px 7px 7px 7px;
+  background-color: rgba(212, 24, 24, 0.8);
+  border: 0px solid rgba(155, 155, 155, 0.8);
+  background-size: 100%;
+  color: aliceblue;
+  height: 2.7rem;
+  width: 8rem;
+  font-size: 1.5rem;
+}
+.login-button:hover {
+  background-color: rgba(185, 17, 17, 0.8);
+  border: 0px solid rgba(155, 155, 155, 0.8);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.upload-button {
+  position: absolute;
+  border-radius: 7px 7px 7px 7px;
+  background-color: rgba(68, 68, 68, 0.8);
+  color: aliceblue;
+  border: none;
+  margin-top: -1.4rem;
+  margin-left: 8.8rem;
+  height: 2.7rem;
+  width: 8rem;
+  font-size: 1.5rem;
+}
+.upload-button:hover {
+  cursor: pointer;
+  background-color: rgba(88, 88, 88, 0.8);
+  transition: all 0.15s ease;
+}
+.dboriginalsicon {
+  position: absolute;
+  margin-left: 32rem;
+  margin-top: -1.9rem;
+  width: 2.3rem;
+}
+.dboriginalsicon:hover {
+  width: 2.37rem;
+}
+.virtualfilmfesticon {
+  padding-top: .9rem;
+  width: 3.5rem;
+}
+.thelabicon {
+  padding-top: .8rem;
+  width: 2.5rem;
+}
+.opensourceicon {
+  position: absolute;
+  margin-left: 20rem;
+  margin-top: -1.7rem;
+  padding-top: .6rem;
+  width: 2.3rem;
+}
+.opensourceicon:hover {
+  width: 2.37rem;
+}
+.communitiesicon {
+  padding-top: .6rem;
+  width: 5rem;
+}
+/* Forms */
+.article {
+  background-color: rgb(241, 236, 236);
+  box-shadow: 0 0 30px black;
+  border-radius: 2%;
+  width: 100rem;
+}
+/*Sidebar *********************************************************************************************************************** */
+.sidebar {
+  height: 95%;
+  width: 0;
+  margin-top: 6rem;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  background-color: rgba(68, 68, 68, 0.8);
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.openbtn {
+  font-size: 26px;
+  cursor: pointer;
+  background: none;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+.openbtn:hover {
+  color: rgb(214, 213, 213);
+}
+/*CSS for Login *********************************************************************************************************************** */
+.login {
+  height: 500px;
+  width: 800px;
+  display: flex;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 200px;
+  box-shadow: 15px 15px 30px black;
+  border-radius: 1rem;
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 1rem 0 0 1rem ;
+}
+.loginform h2 {
+  font: "roboto", Arial, helvetica, sans-serif;
+  font-size: 3rem;
+  margin: 40px;
+}
+.loginform a {
+  text-decoration: none;
+  color: black;
+  margin-top: 2rem;
+}
+.loginform a:hover {
+  color: rgb(77, 77, 77);
+}
+.loginboxes {
+  padding: 12px;
+  width: 65%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+.submit-button {
+  padding: 12px 30px;
+  width: 40%;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+.submit-button {
+  cursor: pointer;
+}
+.login-side-image {
+  display: flex;
+  border-radius: 1rem;
+}
+.login-side-image img {
+  width: 475px;
+  height: 498px;
+  border-radius: 1rem;
+}
+/*CSS for Upload ****************/
+.register {
+  height: 500px;
+  width: 800px;
+  display: flex;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 200px;
+  box-shadow: 15px 15px 30px black;
+  border-radius: 1rem;
+}
+.registerform {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 1rem 0 0 1rem ;
+}
+.registerform h2 {
+  font: "roboto", Arial, helvetica, sans-serif;
+  font-size: 3rem;
+  margin: 40px;
+}
+.registerform a {
+  text-decoration: none;
+  color: black;
+  margin-top: 2rem;
+}
+.registerform a:hover {
+  color: rgb(77, 77, 77);
+}
+.registerboxes {
+  padding: 12px;
+  width: 65%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+.submit-button {
+  padding: 12px 30px;
+  width: 40%;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+.submit-button {
+  cursor: pointer;
+}
+.register-side-image {
+  display: flex;
+  border-radius: 1rem;
+}
+.register-side-image img {
+  width: 475px;
+  height: 498px;
+  border-radius: 1rem;
+}
+/*CSS for Upload *********************************************************************************************************************** */
+.upload {
+  height: 700px;
+  width: 1200px;
+  display: flex;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 200px;
+  box-shadow: 15px 15px 30px black;
+  border-radius: 1rem;
+}
+.uploadform {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 1rem 0 0 1rem ;
+}
+.uploadform h2 {
+  font: "roboto", Arial, helvetica, sans-serif;
+  font-size: 3rem;
+  margin: 40px;
+}
+.uploadform a {
+  text-decoration: none;
+  color: black;
+  margin-top: 2rem;
+}
+.uploadform a:hover {
+  color: rgb(77, 77, 77);
+}
+.uploadboxes {
+  padding: 12px;
+  width: 65%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+.uploadboxes-name {
+  padding: 12px;
+  width: 55%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+.uploadboxes-email {
+  padding: 12px;
+  width: 55%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+.uploadboxes-link {
+  padding: 12px;
+  width: 55%;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+}
+#uploadDescription {
+  padding: 12px;
+  width: 90%;
+  height: 14rem;
+  margin: 15px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 4px;
+  max-width: 90%;
+}
+.submit-button {
+  padding: 12px 30px;
+  width: 40%;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+.submit-button {
+  cursor: pointer;
+}
+.upload-side-image {
+  display: flex;
+  border-radius: 1rem;
+}
+.upload-side-image img {
+  width: 600px;
+  height: 698px;
+  border-radius: 1rem;
+}
+/*CSS for Dain Bramage Originals****************************************************************************************************** */
+.container-dboriginals {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  border: 3px solid rgb(255, 255, 255);
+  background-color: rgb(17, 17, 17);
+  background-size: cover;
+  background-position-y: -37rem;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c c"
+    "f f f f f f f f f f f f";
+}
+.thumbnail {
+  grid-column: 1;
+  grid-row: 1;
+  position: absolute;
+  background: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+.video-container-dboriginals {
+  grid-column: 1;
+  grid-row: 1;
+  width: 99.7%;
+  height: 95%;
+  position: absolute;
+  justify-content: center; 
+  overflow: auto;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.myvideo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.db-originals-next-button {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+  object-fit: contain;
+}
+
+/*CSS for Virtual Film Fest****************************************************************************************************** */
+
+.container-virtualfilmfest {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  border: 3px solid rgb(255, 255, 255);
+  background-color: rgb(17, 17, 17);
+  background-size: cover;
+  background-position-y: -37rem;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c c"
+    "f f f f f f f f f f f f";
+}
+.virtualfilmfest-footer {
+  background-color: #bebebe;
+}
+.virtualfilmfest-main {
+  height: 93vh;
+  width: 99.8vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  /* border: 3px solid rgb(58, 233, 14); */
+}
+.chatbox-container {
+  height: 100%;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* position: relative; */
+  background-size: contain;
+  background-color:rgb(32, 32, 32);
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: none;
+  /* border: 3px solid rgb(241, 237, 6); */
+}
+.chatBox-heading {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-left: 6rem;
+  color: aliceblue;
+  border-color: aqua;
+}
+.commenttextbar-container {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-color: rgb(238, 255, 0);
+}
+.commentTextBar {
+  height: 3rem;
+  width: 30rem;
+  margin-left: 2rem;
+  /* align-self: flex-start;
+  margin-left: 2rem;
+  margin-top: 79rem; */
+  border-radius: 10px;
+  padding-left: 1rem;
+  border: none;
+  outline: none;
+  background-color: rgba(192, 189, 189, 0.8);
+  border-color: rgb(158, 158, 158);
+}
+.commentTextBar:hover {
+  box-shadow: 0px 0px 3px 2px rgb(73, 73, 73);
+  transition: all 0.2s ease;
+  border: 100%;
+}
+.commentTextBar[type="text"]:focus {
+  box-shadow: 0px 0px 3px 2px var(--color-primary);
+  transition: all 0.2s ease;
+  border: 100%;
+  background-color: rgba(214, 214, 214, 0.8);
+  outline: 0;
+}
+.chatSendButton {
+  width: 2rem;
+  height: 1rem;
+  margin-right: 3.7rem;
+  margin-bottom: 1rem;
+  color: aliceblue;
+}
+.recommended-shows-container {
+  height: 100%;
+  width: 30rem;
+  /* position: static; */
+  padding-bottom: 2rem;
+  background-size: contain;
+  background-color: rgb(32, 32, 32);
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  /* border: 3px solid rgb(241, 6, 6); */
+}
+.video-container-virtualfilmfest {
+  height: 100%;
+  width: 70%;
+  border-radius: 4px;
+  /* border: 3px solid rgb(233, 14, 204); */
+}
+
+.virtualfilmfest-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
