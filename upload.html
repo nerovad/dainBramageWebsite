@@ -16,11 +16,11 @@
         <div class="upload">
             <form action="" class="uploadform">
         <h2>Submission Form</h2>
-        <input type="text" name="name" class="uploadboxes-name" placeholder="Name" required>
-        <input type="email" name="email" class="uploadboxes-email" placeholder="Email Address" required>
-        <input type="url" name="projectLink" class="uploadboxes-link" placeholder="Link to Video" required>
+        <input type="text" id="username-upload" name="username" class="uploadboxes-name" placeholder="Name" required>
+        <input type="email" id="email-upload" name="email" class="uploadboxes-email" placeholder="Email Address" required>
+        <input type="url" id="project-link" name="project-link" class="uploadboxes-link" placeholder="Link to Video" required>
         <h3>Tell us why you want to be featured on Dain Bramage TV</h3>
-        <textarea id="uploadDescription" rows="16" maxlength="470" placeholder="Description" required></textarea>
+        <textarea id="upload-description" name="upload-description" rows="16" maxlength="470" placeholder="Description" required></textarea>
 
         <button type="submit" class="submit-button">Submit</button>
     </form>
@@ -28,6 +28,8 @@
         <img src="/images/upload.jpg" alt="">
     </div>
         </div>
+        <div id="error-message-upload" class="error-message-upload"></div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

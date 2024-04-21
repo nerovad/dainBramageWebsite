@@ -5,7 +5,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import tv.dainbramage.backend.repo.UserRepository;
 import tv.dainbramage.backend.user.User;
-
 import java.time.LocalDate;
 import java.util.Optional;
 

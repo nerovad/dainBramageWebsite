@@ -73,30 +73,86 @@ document.getElementById('uploadDescription').addEventListener('input', function(
   }
 });
 
-//HTTP Requests --------------------------
+//Registration Form --------------------------
 
-import axios from 'axios';
-
-document.getElementById('registerform').addEventListener('submit', function(event) {
+document.querySelector('.registerform').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the form from submitting via the browser
 
-  const username = document.getElementById('username').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const dob = document.getElementById('dateOfBirth').value
+  const usernameReg = document.getElementById('username-register').value;
+  const passwordReg = document.getElementById('password-register').value;
+  const emailReg = document.getElementById('email-register').value;
+  const dobReg = document.getElementById('dob-register').value;
 
-  axios.post('http://localhost:8080/api/users/register', {
-      username: username,
-      email: email,
-      password: password,
-      dateOfBirth: dob
+  axios.post('http://localhost:8080/api/register', {
+      username: usernameReg,
+      password: passwordReg,
+      email: emailReg,
+      dateOfBirth: dobReg
   })
   .then(response => {
-      console.log('Registration Success:', response.data);
-      // Handle further logic here, such as redirecting the user
+    console.log('Registration Success:', response.data);
+    window.location.href = 'login.html'; 
+})
+.catch(error => {
+    console.error('Registration Error:', error);
+    // Display error message to the user
+    const errorMessageRegistration = document.getElementById('error-message-registration');
+    errorMessageRegistration.innerText = 'Registration failed. Please try again.';
+    errorMessageRegistration.style.display = 'block';
+});
+});
+
+//Login Form --------------------------
+
+document.querySelector('.loginform').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting via the browser
+
+  const usernameLogin = document.getElementById('username-login').value;
+  const passwordLogin = document.getElementById('password-login').value;
+
+  axios.post('http://localhost:8080/api/login', {
+      username: usernameLogin,
+      password: passwordLogin
+  })
+  .then(response => {
+      console.log('Login Success:', response.data);
+      window.location.href = 'index.html'; 
   })
   .catch(error => {
-      console.error('Registration Error:', error);
-      // Handle errors here, such as displaying a notification
+      console.error('Login Error:', error);
+      const errorMessageLogin = document.getElementById('error-message-login');
+        errorMessageLogin.innerText = 'Login failed. Please try again.';
+        errorMessageLogin.style.display = 'block';
   });
 });
+
+//Submission Form --------------------------
+
+document.querySelector('.uploadform').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting via the browser
+
+  const usernameUpload = document.getElementById('username-upload').value;
+  const emailUpload = document.getElementById('email-upload').value;
+  const projectLinkUpload = document.getElementById('project-link').value;
+  const descriptionUpload = document.getElementById('upload-description').value;
+
+  axios.post('http://localhost:8080/api/submit', {
+      username: usernameUpload,
+      email: emailUpload,
+      projectLink: projectLinkUpload,
+      description: descriptionUpload
+  })
+  .then(response => {
+      console.log('Submission Success:', response.data);
+      window.location.href = 'index.html'; 
+  })
+  .catch(error => {
+      console.error('Submission Error:', error);
+      const errorMessageSubmission = document.getElementById('error-message-submission');
+    errorMessageRegistrationSubmission.innerText = 'Submission failed. Please try again.';
+    errorMessageRegistrationSubmission.style.display = 'block'
+  });
+});
+
+
+

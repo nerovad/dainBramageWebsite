@@ -346,7 +346,15 @@ html {
   height: 498px;
   border-radius: 1rem;
 }
-/*CSS for Upload ****************/
+#error-message-login {
+  display: none;
+  height: 400px;
+  width: 600px;
+  background-color: rgb(0, 0, 0);
+  font-size: 2rem;
+  color: #ff0000;
+}
+/*CSS for register ****************/
 .register {
   height: 500px;
   width: 800px;
@@ -406,6 +414,14 @@ html {
   width: 475px;
   height: 498px;
   border-radius: 1rem;
+}
+#error-message-register {
+  display: none;
+  height: 400px;
+  width: 600px;
+  background-color: rgb(0, 0, 0);
+  font-size: 2rem;
+  color: #ff0000;
 }
 /*CSS for Upload *********************************************************************************************************************** */
 .upload {
@@ -471,7 +487,7 @@ html {
   outline: none;
   border-radius: 4px;
 }
-#uploadDescription {
+#upload-description {
   padding: 12px;
   width: 90%;
   height: 14rem;
@@ -501,6 +517,14 @@ html {
   width: 600px;
   height: 698px;
   border-radius: 1rem;
+}
+#error-message-upload {
+  display: none;
+  height: 400px;
+  width: 600px;
+  background-color: rgb(0, 0, 0);
+  font-size: 2rem;
+  color: #ff0000;
 }
 /*CSS for Dain Bramage Originals****************************************************************************************************** */
 .container-dboriginals {

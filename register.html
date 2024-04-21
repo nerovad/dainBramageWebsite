@@ -16,17 +16,18 @@
         <div class="register">
             <form action="" class="registerform">
         <h2>Register</h2>
-        <input type="text" name="username" class="registerboxes" placeholder="Username" required>
-        <input type="password" name="password" class="registerboxes" placeholder="Password" required>
-        <input type="email" name="email" class="registerboxes" placeholder="Email" required>
-        <input type="date" name="dob" class="registerboxes" placeholder="Date of Birth" required>
+        <input type="text" id="username-register" name="username" class="registerboxes" placeholder="Username" required>
+        <input type="password" id="password-register" name="password" class="registerboxes" placeholder="Password" required>
+        <input type="email" id="email-register" name="email" class="registerboxes" placeholder="Email" required>
+        <input type="date" id="dob-register" name="dob" class="registerboxes" placeholder="Date of Birth" required>
         <button type="submit" class="submit-button">Submit</button>
     </form>
     <div class="register-side-image">
         <img src="/images/color_bars_Login.jpg" alt="">
     </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <div id="error-message-register" class="error-message-register"></div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
