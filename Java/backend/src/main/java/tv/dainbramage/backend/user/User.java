@@ -1,84 +1,87 @@
 package tv.dainbramage.backend.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
-
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class User {
+@Table(name = "users")
+public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_id;
+    @GeneratedValue
+    @Column(name ="id")
+    private Long id;
 
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    @Column(name ="username")
     private String username;
 
+    @NotBlank(message = "Password is required")
+    @Size(min = 6, message = "Password must be at least 6 characters")
+    @Column(name ="password")
     private String password;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
+    @Column(name ="email")
     private String email;
 
-    private LocalDate date_registered;
+    @Column(name ="date_registered")
+    private LocalDateTime dateRegistered;
 
+    @Column(name ="date_of_birth")
     private LocalDate dateOfBirth;
-    public User() {
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public User(String username, String email, String password, LocalDate dateOfBirth) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-    }
-    public Long getUser_id() {
-        return user_id;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    @Override
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDate_registered() {
-        return date_registered;
-    }
-
-    public void setDate_registered(LocalDate date_registered) {
-        this.date_registered = date_registered;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
 }

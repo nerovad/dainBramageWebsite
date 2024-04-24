@@ -83,7 +83,7 @@ document.querySelector('.registerform').addEventListener('submit', function(even
   const emailReg = document.getElementById('email-register').value;
   const dobReg = document.getElementById('dob-register').value;
 
-  axios.post('http://localhost:8080/api/register', {
+  axios.post('http://localhost:8080/api/v1/auth/register', {
       username: usernameReg,
       password: passwordReg,
       email: emailReg,
@@ -110,7 +110,7 @@ document.querySelector('.loginform').addEventListener('submit', function(event) 
   const usernameLogin = document.getElementById('username-login').value;
   const passwordLogin = document.getElementById('password-login').value;
 
-  axios.post('http://localhost:8080/api/login', {
+  axios.post('http://localhost:8080/api/v1/auth/authenticate', {
       username: usernameLogin,
       password: passwordLogin
   })
@@ -136,7 +136,7 @@ document.querySelector('.uploadform').addEventListener('submit', function(event)
   const projectLinkUpload = document.getElementById('project-link').value;
   const descriptionUpload = document.getElementById('upload-description').value;
 
-  axios.post('http://localhost:8080/api/submit', {
+  axios.post('http://localhost:8080/api/v1/auth', {
       username: usernameUpload,
       email: emailUpload,
       projectLink: projectLinkUpload,

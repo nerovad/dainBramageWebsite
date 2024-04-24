@@ -1,4 +1,4 @@
-package tv.dainbramage.backend.rest;
+package tv.dainBramage.test.user.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,16 +24,21 @@ public class UserController {
     public String getGreeting() {
         return "Hi it's me, Matthew!";
     }*/
-   @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
         try {
             User user = userService.registerNewUserAccount(
                     registrationRequest.getUsername(),
-                    registrationRequest.getEmail(),
                     registrationRequest.getPassword(),
+                    registrationRequest.getEmail(),
+                    registrationRequest.getDateRegistered(),
                     registrationRequest.getDateOfBirth()
             );
             return ResponseEntity.ok(user);

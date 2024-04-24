@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema dainBramage
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema dainBramage
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `dainBramage` ;
 USE `dainBramage` ;
 
@@ -25,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `dainBramage`.`users` (
   `username` VARCHAR(25) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `date_registered` DATETIME NOT NULL,
-  `password` VARCHAR(60) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `date_of_birth` DATE NOT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB;
@@ -149,6 +145,16 @@ CREATE TABLE IF NOT EXISTS `dainBramage`.`video_tags` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `dainBramage`.`api_keys`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dainBramage`.`api_keys` (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+    ENGINE = InnoDB;
+  
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

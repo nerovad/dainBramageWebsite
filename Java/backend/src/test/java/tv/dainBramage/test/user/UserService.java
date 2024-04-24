@@ -1,21 +1,26 @@
-package tv.dainbramage.backend.servicePackage;
+package tv.dainBramage.test.user;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tv.dainbramage.backend.repo.UserRepository;
+import tv.dainbramage.backend.user.UserRepository;
 import tv.dainbramage.backend.user.User;
 import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    public User registerNewUserAccount(String username, String email, String password, LocalDate dateOfBirth) throws Exception {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+    public User registerNewUserAccount(String username, String password, String email, LocalDate dateRegistered, LocalDate dateOfBirth) throws Exception {
         if (userRepository.existsByUsername(username)) {
             throw new Exception("There is an account with that username: " + username);
         }
@@ -23,7 +28,7 @@ public class UserService {
             throw new Exception("There is an account with that email address: " + email);
         }
 
-        User newUser = new User(username, email, passwordEncoder.encode(password), dateOfBirth);
+        User newUser = new User(username, passwordEncoder.encode(password), email, dateRegistered, dateOfBirth);
         return userRepository.save(newUser);
     }
 

@@ -1,4 +1,4 @@
-package tv.dainbramage.backend.Configuration;
+package tv.dainBramage.test.user;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -15,8 +15,8 @@ public class DataSourceConfig {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
         config.setJdbcUrl("jdbc:mysql://localhost:3306/dainBramage");
-        config.setUsername("root");
-        config.setPassword("Morfee_Us!99");
+        config.setUsername("springuser");
+        config.setPassword("ThePassword");
         return new HikariDataSource(config);
     }
 }

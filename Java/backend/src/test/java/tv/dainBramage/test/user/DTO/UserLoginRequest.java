@@ -1,4 +1,4 @@
-package tv.dainbramage.backend.DTO;
+package tv.dainBramage.test.user.DTO;
 
 public class UserLoginRequest {
     private String username;
@@ -7,6 +7,15 @@ public class UserLoginRequest {
     // Getters and setters
     public String getUsername() {
         return username;
+    }
+
+    public UserLoginRequest() {
+        // Default constructor
+    }
+
+    public UserLoginRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public void setUsername(String username) {

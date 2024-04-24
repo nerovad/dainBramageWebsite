@@ -1,4 +1,4 @@
-package tv.dainbramage.backend.Configuration;
+package tv.dainBramage.test.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class ApiSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authz) -> authz
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults());

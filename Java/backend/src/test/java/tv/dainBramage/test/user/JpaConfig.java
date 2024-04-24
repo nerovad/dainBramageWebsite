@@ -1,4 +1,4 @@
-package tv.dainbramage.backend.Configuration;
+package tv.dainBramage.test.user;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+
 public class JpaConfig {
 
     @Bean
@@ -21,12 +22,10 @@ public class JpaConfig {
         return em;
     }
 
-    Properties additionalJpaProperties() {
+    private Properties additionalJpaProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-        // Additional properties if needed
+        properties.setProperty("hibernate.show_sql", "true");
         return properties;
     }
-
 }
 

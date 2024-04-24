@@ -1,9 +1,11 @@
-package tv.dainbramage.backend.Api;
+package tv.dainBramage.test.api;
 
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "api_keys")
 public class ApiKey {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +18,6 @@ public class ApiKey {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getValue() {
         return value;
     }
