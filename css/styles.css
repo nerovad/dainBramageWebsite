@@ -56,7 +56,7 @@ html {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 40px auto 40px;
-  border: 3px solid rgb(255, 255, 255);
+  border: none;
   background-color: rgb(17, 17, 17);
   background-size: cover;
   background-position-y: -37rem;
@@ -64,52 +64,46 @@ html {
   background-attachment: fixed;
   grid-template-areas:
     "h h h h h h h h h h h h"
-    "c c c c c c c c c c c m"
-    "f f f f f f f f f f f f";
+    "c c c c c c c c c c c c"
+    "c c c c c c c c c c c c";
 }
-.header {
+.navigation {
   grid-area: h;
-  background: var(--color-accent);
-  background: linear-gradient(
-    90deg,
-    rgba(19, 18, 18, 0.75) 51%,
-    rgba(27, 26, 26, 0.75) 100%
-  );
-  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
-  top: 0;
-  height: 5rem;
-}
-.menu {
-  height: 90rem;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-evenly;
-  align-content: flex-start;
-  margin-top: 8rem;
-  margin-right: 20rem;
-  margin-left: -20rem;
-  grid-area: m;
-  background-color: rgb(94, 93, 93);
-  border: 3px solid rgb(196, 196, 196);
-  background-size: cover;
-  border-radius: 10px;
+  background: var(--color-accent);
+  background: rgb(22, 22, 22);
+  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
+  border: none;
+  height: 50px;
+  width: 100%;
 }
 .content {
   grid-area: c;
   padding-top: 1rem;
 }
-.footer {
-  grid-area: f;
+.container-dboriginals {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  border: none;
+  background-color: rgb(17, 17, 17);
+  background-size: cover;
+  background-position-y: -37rem;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c c"
+    "f f f f f f f f f f f f";
 }
 .nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 0;
-  list-style-type: none;
-  flex-wrap: wrap;
-  padding: 0 1rem;
 }
 .nav-list a, li {
   color: #000;
@@ -117,6 +111,7 @@ html {
   font-size: 1.8rem;
   font-weight: 550;
   font: "roboto", Arial, helvetica, sans-serif;
+  list-style: none;
 }
 .nav-list li a:hover {
   color: var(--color-primary);
@@ -124,7 +119,9 @@ html {
 .dblogo {
   width: 5rem;
   padding-top: .5rem;
-  transition: transform .2s;
+  transition: transform .1s;
+  margin-right: auto;
+  margin-left: 10px;
 }
 .dblogo:hover {
   cursor: pointer;
@@ -134,28 +131,32 @@ html {
 }
 .search-container {
   display: flex;
-  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: -150px;
 }
 .searchbar {
-  height: 3rem;
-  width: 60rem;
+  height: 34px;
+  width: 40px;
   border-radius: 7px 0 0 7px;
-  background-color: rgba(31, 30, 30, 0.8);
+  background-color: rgba(22, 22, 22, 0.8);
   border: 1px solid rgba(110, 110, 110, 0.8);
   outline: 0;
   font-size: 1.4rem;
   padding-left: 1rem;
   flex-grow: 1;
-  margin-left: 50rem;
   color: rgb(158, 157, 157);
+  z-index: 1;
 }
 .searchbar:hover {
   box-shadow: 0px 0px 3px 2px rgb(73, 73, 73);
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   border: 100%;
 }
 .searchbar[type="text"]:focus {
-  box-shadow: 0px 0px 4px 3px var(--color-primary);
+  box-shadow: 0px 0px 3px 4px var(--color-primary);
   transition: all 0.2s ease;
   border: 100%;
   background-color: rgba(214, 214, 214, 0.8);
@@ -175,12 +176,17 @@ html {
   border-radius: 0px 7px 7px 0px;
   background-color: rgba(56, 56, 56, 0.8);
   border: 1px solid rgba(110, 110, 110, 0.8);
-  height: 3rem;
+  height: 34px;
   width: 3.8rem;
   cursor: pointer;
 }
 .search-button:hover {
   background-color: rgba(85, 84, 84, 0.8);
+}
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
 }
 .login-button {
   border-radius: 7px 7px 7px 7px;
@@ -191,6 +197,7 @@ html {
   height: 2.7rem;
   width: 8rem;
   font-size: 1.5rem;
+  margin-left: auto;
 }
 .login-button:hover {
   background-color: rgba(185, 17, 17, 0.8);
@@ -199,13 +206,10 @@ html {
   transition: all 0.15s ease;
 }
 .upload-button {
-  position: absolute;
   border-radius: 7px 7px 7px 7px;
   background-color: rgba(68, 68, 68, 0.8);
   color: aliceblue;
   border: none;
-  margin-top: -1.4rem;
-  margin-left: 8.8rem;
   height: 2.7rem;
   width: 8rem;
   font-size: 1.5rem;
@@ -215,36 +219,38 @@ html {
   background-color: rgba(88, 88, 88, 0.8);
   transition: all 0.15s ease;
 }
+.icon-container {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+}
 .dboriginalsicon {
-  position: absolute;
-  margin-left: 32rem;
-  margin-top: -1.9rem;
-  width: 2.3rem;
-}
-.dboriginalsicon:hover {
-  width: 2.37rem;
-}
-.virtualfilmfesticon {
-  padding-top: .9rem;
-  width: 3.5rem;
-}
-.thelabicon {
-  padding-top: .8rem;
-  width: 2.5rem;
+  width: 23px;
 }
 .opensourceicon {
-  position: absolute;
-  margin-left: 20rem;
-  margin-top: -1.7rem;
-  padding-top: .6rem;
-  width: 2.3rem;
+  margin-top: 6px;
+  width: 25px;
 }
-.opensourceicon:hover {
-  width: 2.37rem;
+.dboriginalsicon, .opensourceicon {
+  transition: transform 0.1s; 
 }
-.communitiesicon {
-  padding-top: .6rem;
-  width: 5rem;
+.dboriginalsicon:hover, .opensourceicon:hover {
+  transform: scale(1.08);
+}
+.hamburger-container {
+  display: none;
+}
+.hamburger-button {
+  display: none;
+  height: 0%;
+  width: 0%;
+  background-size: 0%;
+}
+.hamburger-list {
+  display: none;
+  background: none;
+  border: none;
 }
 /* Forms */
 .article {
@@ -300,14 +306,17 @@ html {
   display: flex;
   flex-direction: column;
   width: 50%;
-  align-items: center;
+  align-items: flex-start;
   background-color: whitesmoke;
   border-radius: 1rem 0 0 1rem ;
+}
+.loginform h2, .loginboxes, .submit-button, .loginform a {
+  align-self: center;
 }
 .loginform h2 {
   font: "roboto", Arial, helvetica, sans-serif;
   font-size: 3rem;
-  margin: 40px;
+  margin: 30px;
 }
 .loginform a {
   text-decoration: none;
@@ -354,6 +363,18 @@ html {
   font-size: 2rem;
   color: #ff0000;
 }
+.dblogo-login {
+  width: 5rem;
+  background: none;
+  margin-top: 1rem;
+  transition: transform .2s;
+  align-self: flex-start;
+  margin-left: 1rem;
+}
+.dblogo-login:hover {
+  cursor: pointer;
+  transform:scale(1.06);
+}
 /*CSS for register ****************/
 .register {
   height: 500px;
@@ -369,14 +390,17 @@ html {
   display: flex;
   flex-direction: column;
   width: 50%;
-  align-items: center;
+  align-items: flex-start;
   background-color: whitesmoke;
   border-radius: 1rem 0 0 1rem ;
+}
+.registerform h2, .registerform a, .registerboxes {
+  align-self: center;
 }
 .registerform h2 {
   font: "roboto", Arial, helvetica, sans-serif;
   font-size: 3rem;
-  margin: 40px;
+  margin: 20px;
 }
 .registerform a {
   text-decoration: none;
@@ -423,6 +447,18 @@ html {
   font-size: 2rem;
   color: #ff0000;
 }
+.dblogo-register {
+  width: 5rem;
+  background: none;
+  margin-top: 1rem;
+  transition: transform .2s;
+  align-self: flex-start;
+  margin-left: 1rem;
+}
+.dblogo-register:hover {
+  cursor: pointer;
+  transform:scale(1.06);
+}
 /*CSS for Upload *********************************************************************************************************************** */
 .upload {
   height: 700px;
@@ -438,14 +474,17 @@ html {
   display: flex;
   flex-direction: column;
   width: 50%;
-  align-items: center;
+  align-items: flex-start;
   background-color: whitesmoke;
   border-radius: 1rem 0 0 1rem ;
+}
+.uploadform h2, .uploadform h3, .uploadform a, .uploadboxes-name, .uploadboxes-email, .uploadboxes-link {
+  align-self: center;
 }
 .uploadform h2 {
   font: "roboto", Arial, helvetica, sans-serif;
   font-size: 3rem;
-  margin: 40px;
+  margin: 30px;
 }
 .uploadform a {
   text-decoration: none;
@@ -496,6 +535,7 @@ html {
   outline: none;
   border-radius: 4px;
   max-width: 90%;
+  align-self: center;
 }
 .submit-button {
   padding: 12px 30px;
@@ -526,23 +566,20 @@ html {
   font-size: 2rem;
   color: #ff0000;
 }
-/*CSS for Dain Bramage Originals****************************************************************************************************** */
-.container-dboriginals {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 40px auto 40px;
-  border: 3px solid rgb(255, 255, 255);
-  background-color: rgb(17, 17, 17);
-  background-size: cover;
-  background-position-y: -37rem;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  grid-template-areas:
-    "h h h h h h h h h h h h"
-    "c c c c c c c c c c c c"
-    "f f f f f f f f f f f f";
+.dblogo-upload {
+  width: 5rem;
+  background: none;
+  margin-top: 1rem;
+  transition: transform .2s;
+  align-self: flex-start;
+  margin-left: 1rem;
 }
+.dblogo-upload:hover {
+  cursor: pointer;
+  transform:scale(1.06);
+}
+/*CSS for Dain Bramage Originals****************************************************************************************************** */
+
 .thumbnail {
   grid-column: 1;
   grid-row: 1;
@@ -707,4 +744,252 @@ html {
   width: 100%;
   height: 100%;
   border-radius: 4px;
+}
+
+/* Smaller screens (Mobile devices) */
+@media (max-width: 1100px) {
+  html, body {
+      font-size: 50%; 
+      overflow-x: hidden;
+      max-width: 100%;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(27, 27, 27);
+}
+  .hamburger-container {
+    position: relative; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+}
+  .search-container {
+    display:none;
+    border: 0px;
+    color: rgba(235, 235, 235, 0.8);
+    height: 0rem;
+    width: 0rem;
+    font-size: 0rem;
+}
+.searchbar {
+  display: none;
+  height: 34px;
+  width: 40px;
+  border-radius: 7px 0 0 7px;
+  background-color: rgba(22, 22, 22, 0.8);
+  border: 1px solid rgba(110, 110, 110, 0.8);
+  outline: 0;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  flex-grow: 1;
+  color: rgb(158, 157, 157);
+  z-index: 1;
+}
+
+.magnifyingglass {
+  height: 2.4rem;
+  width: 3rem;
+  margin-top: .2rem;
+  margin-left: .7rem;
+}
+.search-button {
+  display: none;
+  border-radius: 0px 7px 7px 0px;
+  background-color: rgba(56, 56, 56, 0.8);
+  border: 1px solid rgba(110, 110, 110, 0.8);
+  height: 34px;
+  width: 3.8rem;
+  cursor: pointer;
+}
+.dboriginalsicon {
+  display: none;
+}
+  .opensourceicon {
+    display:none;
+    border: 0px;
+    color: rgba(235, 235, 235, 0.8);
+    height: 0rem;
+    width: 0rem;
+    font-size: 0rem;
+}
+
+  .upload-button {
+    display:none;
+    border: 0px;
+    color: rgba(235, 235, 235, 0.8);
+    height: 0rem;
+    width: 0rem;
+    font-size: 0rem;
+}
+
+  .login-button {
+    display:none;
+    border: 0px;
+    color: rgba(235, 235, 235, 0.8);
+    height: 0rem;
+    width: 0rem;
+    font-size: 0rem;
+}
+
+.login-button-small {
+  height: 30px;
+  display: inline-block;
+  border: none;
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  margin-top: 30px;
+}
+.login-button-small:hover {
+  cursor: pointer;
+}
+.opensource-button-small {
+  height: 30px;
+  display: inline-block;
+  border: none;
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  margin-top: 30px;
+}
+.opensource-button-small {
+  cursor: pointer;
+}
+  .hamburger-button{
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(235, 235, 235);
+    font-size: 6rem;
+    background: none;
+    cursor: pointer;
+    border: none;
+    order: 1;
+    padding: 0px;
+    z-index: 8;
+    margin-right: 10px;
+    align-self: center;
+}
+
+  .close-button {
+    font-size: 24px; 
+    cursor: pointer;
+    border: none;
+    background: none;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    color: #333; 
+    z-index: 30; 
+}
+
+  .logo {
+    display: block;
+    height: 4rem;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+}
+
+  .hamburger-list {
+    list-style: none;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0; 
+    width: 250px; 
+    height: 100vh; 
+    background-color: rgb(235, 234, 234); 
+    box-shadow: -4px 0 8px rgba(0,0,0,0.1); 
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out; 
+    padding: 20px; 
+    display: none; 
+}
+
+  .hamburger-list.show {
+    display: block;
+    transform: translateX(0); 
+}
+}
+
+ /* Medium screens (Tablets) */
+@media (min-width: 1100px) and (max-width: 1400px) {
+  html, body {
+    font-size: 50%; /* Reduce font size for small devices */
+    overflow-x: hidden;
+    max-width: 100%;
+} 
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.nav-list a, li {
+  color: #000;
+  /* text-decoration: none; */
+  font-size: 1.8rem;
+  font-weight: 550;
+  font: "roboto", Arial, helvetica, sans-serif;
+  list-style: none;
+}
+.nav-list li a:hover {
+  color: var(--color-primary);
+}
+.dblogo {
+  width: 5rem;
+  padding-top: .5rem;
+  transition: transform .1s;
+  margin-right: auto;
+  margin-left: 10px;
+}
+
+.login-button {
+  border-radius: 7px 7px 7px 7px;
+  background-color: rgba(212, 24, 24, 0.8);
+  border: 0px solid rgba(155, 155, 155, 0.8);
+  background-size: 100%;
+  color: aliceblue;
+  height: 2.7rem;
+  width: 8rem;
+  font-size: 1.5rem;
+  margin-left: auto;
+}
+
+.upload-button {
+  border-radius: 7px 7px 7px 7px;
+  background-color: rgba(68, 68, 68, 0.8);
+  color: aliceblue;
+  border: none;
+  height: 2.7rem;
+  width: 8rem;
+  font-size: 1.5rem;
+}
+
+.icon-container {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+.dboriginalsicon {
+  width: 23px;
+}
+.opensourceicon {
+  margin-top: 6px;
+  width: 25px;
+}
+
 }

@@ -10,10 +10,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/normalize.css" />
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="icon" type="image/svg+xml" href="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg">
+
     </head>
     <body class="container-dboriginals">
-            <div class="header">
-              <nav>
+            <div class="navigation">
                 <ul class="nav-list">
                     <li><a href="index.html">
                         <img class="dblogo" src="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg" alt="Dain Bramage TV Home">
@@ -22,16 +23,27 @@
                         <input class="searchbar" type="text" placeholder="Search">
                         <button type="submit" class="search-button"><img class="magnifyingglass" src="images/DBwebsiteIconSearchV4.svg"></button>
                     </li>
+                    <div class="icon-container">
                     <li><a href="index.html">
                         <img class="dboriginalsicon" src="images/DBwebsiteIconDBTVV2_Middle.svg">
                     </a></li>
                     <li><a href="openSource.html">
                         <img class="opensourceicon" src="images/DBwebsiteIconOpenSourceV2_Middle.svg">
                     </a></li>
+                  </div>
+                    <div class="button-container">
                     <li><a href="upload.html"><button class="upload-button">Upload</button></a></li>
                     <li><a href="login.html"><button class="login-button">Log In</button></a></li>
+                  </div>
+                    <div class="hamburger-container">
+                      <button class="hamburger-button" onclick="toggleHamburger()">&#9776;</button>
+                          <ul class="hamburger-list">
+                              <button class="close-button">&#10005;</button>
+                              <li><a href="login.html"><button class="login-button-small">LOG IN</button></a></li>
+                              <li><a href="openSource.html"><button class="opensource-button-small">DATABASE</button></a></li>
+                          </ul>
+                        </div>
                 </ul>
-            </nav>
             </div>
             <!--<div id="mySidebar" class="sidebar">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -47,6 +59,7 @@
                   </div>
                 </div>
             <!--<button class="openbtn" onclick="openNav()">&rarr;</button>-->
+              <script src="./hamburger.js"></script>
               <script src="./dboriginals.js"></script>
         </main>
     </body>
