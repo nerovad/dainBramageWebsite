@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import tv.dainbramage.backend.token.Token;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -53,6 +54,9 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user", targetEntity = Token.class)
+    private List tokens;
 
     @Override
     public boolean isAccountNonExpired() {

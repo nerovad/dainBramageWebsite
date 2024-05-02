@@ -51,41 +51,10 @@ p {
 html {
   font-size: 62.5%;
 }
-.container-home {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 40px auto 40px;
-  border: none;
-  background-color: rgb(17, 17, 17);
-  background-size: cover;
-  background-position-y: -37rem;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  grid-template-areas:
-    "h h h h h h h h h h h h"
-    "c c c c c c c c c c c c"
-    "c c c c c c c c c c c c";
-}
-.navigation {
-  grid-area: h;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  background: var(--color-accent);
-  background: rgb(22, 22, 22);
-  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
-  border: none;
-  height: 50px;
-  width: 100%;
-}
-.content {
-  grid-area: c;
-  padding-top: 1rem;
-}
 .container-dboriginals {
   height: 100vh;
   display: grid;
+  overflow-y: hidden; 
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 40px auto 40px;
   border: none;
@@ -98,6 +67,23 @@ html {
     "h h h h h h h h h h h h"
     "c c c c c c c c c c c c"
     "f f f f f f f f f f f f";
+}
+.navigation {
+  grid-area: h;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background: var(--color-accent);
+  background: rgb(22, 22, 22);
+  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
+  border: none;
+  height: 50px;
+  width: 100%;
+  z-index: 2;
+}
+.content {
+  grid-area: c;
+  padding-top: 1rem;
 }
 .nav-list {
   display: flex;
@@ -118,10 +104,12 @@ html {
 }
 .dblogo {
   width: 5rem;
+  min-width: 5rem;
   padding-top: .5rem;
   transition: transform .1s;
   margin-right: auto;
   margin-left: 10px;
+  flex-shrink: 0;
 }
 .dblogo:hover {
   cursor: pointer;
@@ -135,7 +123,7 @@ html {
   justify-content: center;
   max-width: 600px;
   margin-left: auto;
-  margin-right: -150px;
+  margin-right: -180px;
 }
 .searchbar {
   height: 34px;
@@ -198,6 +186,8 @@ html {
   width: 8rem;
   font-size: 1.5rem;
   margin-left: auto;
+  font-style: none;
+  text-decoration: none;
 }
 .login-button:hover {
   background-color: rgba(185, 17, 17, 0.8);
@@ -217,7 +207,48 @@ html {
 .upload-button:hover {
   cursor: pointer;
   background-color: rgba(88, 88, 88, 0.8);
-  transition: all 0.15s ease;
+}
+.profile-button-container {
+  position: relative;
+}
+.profile-button {
+  display: none;
+  width: 33px;
+  margin-right: 20px;
+}
+.profile-button:hover {
+  cursor: pointer;
+}
+.profile-list {
+  position: absolute;
+  background-color: #d6d6d6;
+  border-radius: .25rem;
+  list-style: none;
+  right: 0;
+  padding: 10px;
+  top: calc(100% + .25rem);
+  width: 150px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+.profile-button-container > .profile-link + .profile-list {
+  opacity: 1;
+  transform: translateY(0);
+
+}
+.profile-link{
+  color: rgb(8, 8, 8);
+  font-size: 1.6rem;
+  text-decoration: none;
+  font: "roboto", Arial, helvetica, sans-serif;
+  background-color: none;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+.profile-link:hover {
+  cursor: pointer;
 }
 .icon-container {
   display: flex;
@@ -258,6 +289,46 @@ html {
   box-shadow: 0 0 30px black;
   border-radius: 2%;
   width: 100rem;
+}
+/*Homescreen ***************************** */
+.thumbnail {
+  cursor: pointer;
+  width: 1200px;
+  height: 1200px;
+}
+.video-container-dboriginals {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center; 
+  z-index: 1;
+  position: relative;
+}
+
+.myvideo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.db-originals-next-button {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+  object-fit: contain;
+}
+.channelnumber {
+  font-family: Orbitron;
+  font-size: 10rem;
+  color: rgb(255, 255, 255);
+  margin-left: 40px;
+  margin-top: 20px;
 }
 /*Sidebar *********************************************************************************************************************** */
 .sidebar {
@@ -364,7 +435,7 @@ html {
   color: #ff0000;
 }
 .dblogo-login {
-  width: 5rem;
+  width: 4.3rem;
   background: none;
   margin-top: 1rem;
   transition: transform .2s;
@@ -448,7 +519,7 @@ html {
   color: #ff0000;
 }
 .dblogo-register {
-  width: 5rem;
+  width: 4.3rem;
   background: none;
   margin-top: 1rem;
   transition: transform .2s;
@@ -580,49 +651,7 @@ html {
 }
 /*CSS for Dain Bramage Originals****************************************************************************************************** */
 
-.thumbnail {
-  grid-column: 1;
-  grid-row: 1;
-  position: absolute;
-  background: transparent;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  cursor: pointer;
-}
-.video-container-dboriginals {
-  grid-column: 1;
-  grid-row: 1;
-  width: 99.7%;
-  height: 95%;
-  position: absolute;
-  justify-content: center; 
-  overflow: auto;
-  object-fit: contain;
-  z-index: 1;
-}
 
-.myvideo {
-  grid-column: 1;
-  grid-row: 1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-}
-
-.db-originals-next-button {
-  grid-column: 1;
-  grid-row: 1;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  position: absolute;
-  z-index: 1;
-  object-fit: contain;
-}
 
 /*CSS for Virtual Film Fest****************************************************************************************************** */
 
@@ -894,12 +923,9 @@ html {
     z-index: 30; 
 }
 
-  .logo {
-    display: block;
-    height: 4rem;
-    margin-bottom: 0rem;
-    margin-top: 0rem;
-}
+  .dblogo {
+    flex-shrink: 0;
+  }
 
   .hamburger-list {
     list-style: none;
@@ -920,6 +946,10 @@ html {
   .hamburger-list.show {
     display: block;
     transform: translateX(0); 
+}
+.thumbnail {
+  width: 500px;
+  height: 500px;
 }
 }
 
@@ -947,13 +977,6 @@ html {
 }
 .nav-list li a:hover {
   color: var(--color-primary);
-}
-.dblogo {
-  width: 5rem;
-  padding-top: .5rem;
-  transition: transform .1s;
-  margin-right: auto;
-  margin-left: 10px;
 }
 
 .login-button {

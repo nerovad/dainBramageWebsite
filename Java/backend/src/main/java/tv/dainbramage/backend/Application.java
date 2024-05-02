@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "tv.dainbramage.backend.user")
-@EntityScan("tv.dainbramage.backend.user")
+@EnableJpaRepositories(basePackages = {"tv.dainbramage.backend.user", "tv.dainbramage.backend.token"})
+@EntityScan({"tv.dainbramage.backend.user", "tv.dainbramage.backend.token"})
 @ComponentScan(basePackages = "tv.dainbramage.backend")
 public class Application {
 

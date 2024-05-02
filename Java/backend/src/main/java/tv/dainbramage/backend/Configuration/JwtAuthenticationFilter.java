@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import tv.dainbramage.backend.servicePackage.JwtService;
+import tv.dainbramage.backend.token.TokenRepository;
 
 import java.io.IOException;
 
@@ -23,6 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+    private final TokenRepository tokenRepository;
     @Override
     protected void doFilterInternal(
             @Nonnull HttpServletRequest request,
@@ -40,7 +42,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         username = jwtService.extractUsername(jwt);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (jwtService.isTokenValid(jwt, userDetails)) {
+            var isTokenValid = tokenRepository.findByToken(jwt)
+                    .map(t -> !t.isExpired() && !t.isRevoked())
+                    .orElse(false);
+            if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,

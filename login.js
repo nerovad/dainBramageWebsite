@@ -20,3 +20,40 @@ document.querySelector('.loginform').addEventListener('submit', function(event) 
           errorMessageLogin.style.display = 'block';
     });
   });
+
+  // Function to check if the token is valid
+  function checkTokenValidity() {
+    console.log('Checking token validity...');
+    const jwt = localStorage.getItem('jwt'); 
+    if (jwt) {
+        
+        axios.get('http://localhost:8080/api/v1/auth/authenticate', {
+                params: {
+                    token: jwt
+                }
+            })
+            .then(response => {
+                const isValid = response.data.isValid;
+                if (isValid) {
+                    
+                    document.getElementById('profile-button').style.display = 'block';
+                    document.getElementById('loginButton').style.display = 'none';
+                } else {
+                    
+                    document.getElementById('profile-button').style.display = 'none';
+                    document.getElementById('loginButton').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Token validation error:', error);
+                
+            });
+    } else {
+        
+        document.getElementById('profile-button').style.display = 'none';
+        document.getElementById('loginButton').style.display = 'block';
+    }
+}
+
+// Call the function to check token validity when the page is loaded
+checkTokenValidity();

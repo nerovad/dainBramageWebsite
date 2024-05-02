@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="icon" type="image/svg+xml" href="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg">
@@ -15,52 +16,71 @@
     </head>
     <body class="container-dboriginals">
             <div class="navigation">
-                <ul class="nav-list">
-                    <li><a href="index.html">
-                        <img class="dblogo" src="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg" alt="Dain Bramage TV Home">
-                    </a></li>
-                    <li class="search-container">
-                        <input class="searchbar" type="text" placeholder="Search">
-                        <button type="submit" class="search-button"><img class="magnifyingglass" src="images/DBwebsiteIconSearchV4.svg"></button>
-                    </li>
+                <div class="nav-list">
+                  <a href="index.html">
+                  <img class="dblogo" src="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg" alt="Dain Bramage TV Home">
+                </a>  
+                  <div class="search-container">  
+                      <input class="searchbar" type="text" placeholder="Search">
+                      <button type="submit" class="search-button">
+                        <img class="magnifyingglass" src="images/DBwebsiteIconSearchV4.svg">
+                      </button>
+                    </div>
                     <div class="icon-container">
-                    <li><a href="index.html">
-                        <img class="dboriginalsicon" src="images/DBwebsiteIconDBTVV2_Middle.svg">
-                    </a></li>
-                    <li><a href="openSource.html">
-                        <img class="opensourceicon" src="images/DBwebsiteIconOpenSourceV2_Middle.svg">
-                    </a></li>
+                      <a href="index.html">
+                      <img class="dboriginalsicon" src="images/DBwebsiteIconDBTVV2_Middle.svg">
+                    </a>
+                    <a href="openSource.html">
+                      <img class="opensourceicon" src="images/DBwebsiteIconOpenSourceV2_Middle.svg">
+                    </a>
                   </div>
                     <div class="button-container">
-                    <li><a href="upload.html"><button class="upload-button">Upload</button></a></li>
-                    <li><a href="login.html"><button class="login-button">Log In</button></a></li>
+                      <a href="upload.html">
+                        <button class="upload-button">Upload</button>
+                    </a>
+                    <a href="login.html">
+                      <button class="login-button" id="loginButton">Log In</button>
+                    </a>
+                    <div class="profile-button-container" data-dropdown>
+                      <img class="profile-button" id="profile-button" src="images/Logged_in_Icon.svg" data-dropdown-button>
+                      <div class="profile-list" id="profile-list">
+                        <button class="profile-link">DAY MODE</button>
+                        <a href="#" class="profile-link">SETTINGS</a>
+                        <button class="profile-link">LOG OUT</button>
+                      </div>
                   </div>
+                    
+                    </div>
+                  
                     <div class="hamburger-container">
                       <button class="hamburger-button" onclick="toggleHamburger()">&#9776;</button>
                           <ul class="hamburger-list">
                               <button class="close-button">&#10005;</button>
                               <li><a href="login.html"><button class="login-button-small">LOG IN</button></a></li>
-                              <li><a href="openSource.html"><button class="opensource-button-small">DATABASE</button></a></li>
+                              <li><a href="openSource.html"><button class="opensource-button-small">TV GUIDE</button></a></li>
                           </ul>
                         </div>
-                </ul>
+                      </div>
             </div>
             <!--<div id="mySidebar" class="sidebar">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             </div>-->
               <main class="content">
                 <div class="video-container-dboriginals" id="video-container">
-                  <img class="thumbnail" src="images/Click.svg" alt="Click anywhere to begin...">
+                  <img class="thumbnail" src="images/Dain_Bramage_Home_Screen.svg" alt="Click anywhere to begin...">
             
                   <video class= myvideo id="myvideo" preload="metadata">
                   </video>
                   
-                  <div class="db-originals-next-button" id="next-button"> 
+                  <div class="db-originals-next-button" id="next-button">
+                    <div class="channelnumber"><span id="channel-number"></span></div>
                   </div>
                 </div>
             <!--<button class="openbtn" onclick="openNav()">&rarr;</button>-->
               <script src="./hamburger.js"></script>
               <script src="./dboriginals.js"></script>
+              <script src="./logintoprofile.js"></script>
+              
         </main>
     </body>
 </html>

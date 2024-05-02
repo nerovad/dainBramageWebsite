@@ -23,3 +23,10 @@ document.querySelector('.uploadform').addEventListener('submit', function(event)
       errorMessageRegistrationSubmission.style.display = 'block'
     });
   });
+
+  //upload description box--------------
+document.getElementById('uploadDescription').addEventListener('input', function() {
+  if (this.value.length > this.maxLength) {
+      this.value = this.value.slice(0, this.maxLength);
+  }
+});
