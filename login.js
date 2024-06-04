@@ -10,7 +10,8 @@ document.querySelector('.loginform').addEventListener('submit', function(event) 
     })
     .then(response => {
         console.log('Login Success:', response.data);
-        localStorage.setItem('jwt', response.data.jwt); // Store JWT
+        console.log('JWT token from response:', response.data.token);
+        localStorage.setItem('jwt', response.data.token); // Store JWT
         window.location.href = 'index.html'; 
     })
     .catch(error => {

@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="icon" type="image/svg+xml" href="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg">
     </head>
-    <body class="container-dboriginals">
+    <body>
         <div class="navigation">
             <ul class="nav-list">
                 <li><a href="index.html">
@@ -23,13 +23,23 @@
                     <button type="submit" class="search-button"><img class="magnifyingglass" src="images/DBwebsiteIconSearchV4.svg"></button>
                 </li>
                 <div class="icon-container">
-                <li><a href="index.html">
-                    <img class="dboriginalsicon" src="images/DBwebsiteIconDBTVV2_Middle.svg">
-                </a></li>
-                <li><a href="openSource.html">
-                    <img class="opensourceicon" src="images/DBwebsiteIconOpenSourceV2_Middle.svg">
-                </a></li>
-              </div>
+                    <a href="index.html" class="icon-wrapper">
+                    <img class="dboriginalsicon" src="images/DBwebsiteIconDBTV.svg">
+                    <span class="tooltip-text">TV</span>
+                  </a>
+                  <a href="tVGuide.html" class="icon-wrapper">
+                    <img class="tvguideicon" src="images/DBwebsiteIconOpenSource.svg">
+                    <span class="tooltip-text">TV Guide</span>
+                  </a>
+                  <a href="#" class="icon-wrapper">
+                    <img class="remote-icon" src="images/DB_Remote.svg">
+                    <span class="tooltip-text">Remote</span>
+                  </a>
+                  <a href="#" class="icon-wrapper">
+                    <img class="chat-icon" src="images/DB_Chat_Icon.svg">
+                    <span class="tooltip-text">Chat</span>
+                  </a>
+                </div>
                 <div class="button-container">
                 <li><a href="upload.html"><button class="upload-button">Upload</button></a></li>
                 <li><a href="login.html"><button class="login-button">Log In</button></a></li>
@@ -39,14 +49,28 @@
                       <ul class="hamburger-list">
                           <button class="close-button">&#10005;</button>
                           <li><a href="login.html"><button class="login-button-small">LOG IN</button></a></li>
-                          <li><a href="openSource.html"><button class="opensource-button-small">TV GUIDE</button></a></li>
+                          <li><a href="tVGuide.html"><button class="tvguide-button-small">TV GUIDE</button></a></li>
                       </ul>
                     </div>
             </ul>
         </div>
-            
-              <main class="content">
-            
+        <div class="video-page-outer-container">
+              <main class="video-page-content">
+                <div class="video-page-container">
+                    <title>Peter Gabriel - Sledgehammer</title>
+                <div class="artwork-container">
+                <div class="halo-artwork"><img src="/images/Peter_Gabriel.png" alt=""></div>
+                <div class="video-description"><h4>A music video by Peter Gabriel</h4></div></div>
+                <div class="crew-container">  
+                <div class="horizontal-line"></div>
+                <div class="director"><h5>Director Jack Noma</h5></div>
+                <div class="horizontal-line"></div>
+                <div class="producer"><h5>Producer Atlantic Records</h5></div>
+                <div class="horizontal-line"></div>
+                <div class="actor"><h5>Stars Peter Gabriel</h5></div>
+            </div> 
+            </div>
         </main>
+    </div>
     </body>
 </html>

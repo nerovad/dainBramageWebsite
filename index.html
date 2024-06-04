@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="icon" type="image/svg+xml" href="images/J0013_DAIN_BRAMAGE_LOGO_V01.svg">
 
+
     </head>
     <body class="container-dboriginals">
             <div class="navigation">
@@ -27,11 +28,28 @@
                       </button>
                     </div>
                     <div class="icon-container">
-                      <a href="index.html">
-                      <img class="dboriginalsicon" src="images/DBwebsiteIconDBTVV2_Middle.svg">
+                      <a href="index.html" class="icon-wrapper">
+                      <img class="dboriginalsicon" src="images/DBwebsiteIconDBTV.svg">
+                      <span class="tooltip-text">TV</span>
                     </a>
-                    <a href="openSource.html">
-                      <img class="opensourceicon" src="images/DBwebsiteIconOpenSourceV2_Middle.svg">
+                    <a href="tVGuide.html" class="icon-wrapper">
+                      <img class="tvguideicon" src="images/DBwebsiteIconOpenSource.svg">
+                      <span class="tooltip-text">TV Guide</span>
+                    </a>
+                    <div class="remote-container">
+                    <div class="icon-wrapper">
+                      <div id="remote-button-id"><img class="remote-icon" src="images/DB_Remote.svg"></div>
+                      <span class="tooltip-text">Remote</span>
+                    </div>
+                    <div class="remote-menu" id="remote-menu-id"><br>MOUSE <br><br>
+                    Channel &uarr; &darr; = <br>left | right click <br><br><br>
+                    KEYBOARD <br><br>
+                    Channel &uarr; &darr; = <br>&uarr; &darr; arrows <br><br>
+                    Mute = 'm'<br><br></div>
+                  </div>
+                    <a href="#" class="icon-wrapper">
+                      <img class="chat-icon" src="images/DB_Chat_Icon.svg">
+                      <span class="tooltip-text">Chat</span>
                     </a>
                   </div>
                     <div class="button-container">
@@ -39,10 +57,10 @@
                         <button class="upload-button">Upload</button>
                     </a>
                     <a href="login.html">
-                      <button class="login-button" id="loginButton">Log In</button>
+                      <button class="login-button" id="login-button-id">Log In</button>
                     </a>
                     <div class="profile-button-container" data-dropdown>
-                      <img class="profile-button" id="profile-button" src="images/Logged_in_Icon.svg" data-dropdown-button>
+                      <img class="profile-button" id="profile-button-id" src="images/Logged_in_Icon.svg" data-dropdown-button>
                       <div class="profile-list" id="profile-list">
                         <button class="profile-link">DAY MODE</button>
                         <a href="#" class="profile-link">SETTINGS</a>
@@ -57,7 +75,7 @@
                           <ul class="hamburger-list">
                               <button class="close-button">&#10005;</button>
                               <li><a href="login.html"><button class="login-button-small">LOG IN</button></a></li>
-                              <li><a href="openSource.html"><button class="opensource-button-small">TV GUIDE</button></a></li>
+                              <li><a href="tVGuide.html"><button class="tvguide-button-small">TV GUIDE</button></a></li>
                           </ul>
                         </div>
                       </div>
@@ -67,8 +85,10 @@
             </div>-->
               <main class="content">
                 <div class="video-container-dboriginals" id="video-container">
-                  <img class="thumbnail" src="images/Dain_Bramage_Home_Screen.svg" alt="Click anywhere to begin...">
-            
+                  <div class="tv-container">
+                  <img class="thumbnail" src="images/Dain_Bramage_Home_Screen_V2.png" alt="Click anywhere to begin...">
+                  <img class="power-button" src="images/DB_Power_Button.svg" alt="Power Button">
+                </div>
                   <video class= myvideo id="myvideo" preload="metadata">
                   </video>
                   
@@ -76,11 +96,34 @@
                     <div class="channelnumber"><span id="channel-number"></span></div>
                   </div>
                 </div>
+                <div class="trending-channels">
+                  <h3>Trending Channels <br><br><br></h3>
+                  <ul>
+                      <li>Channel 2: Dain Bramage <br><h4>27.4k watching</h4></li>
+                      <li>Channel 17: Music<br><h4>19.2k watching</h4></li>
+                      <li>Channel 29: Skateboarding<br><h4>18.5k watching</h4></li>
+                      <li>Channel 31: Horror<br><h4>17.6k watching</h4></li>
+                      <li>Channel 99: Film Fest<br><h4>17.4k watching</h4></li>
+                      <li>Channel 104: Late Nite Movies<br><h4>15.1k watching</h4></li>
+                      <li>Channel 108: Sports Bloopers<br><h4>10.9k watching</h4></li>
+                      <li>Channel 145: Home Movies<br><h4>9.7k watching</h4></li>
+                      <li>Channel 179: Public TV<br><h4>4.4k watching</h4></li>
+                      <li>Channel 199: Documentaries<br><h4>2.6k watching</h4></li>
+                  </ul>
+              </div>
+                <div class="news-ticker">
+                  <div class="ticker">
+                      <p>Breaking News: Dain Bramage TV launches new features! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        New Festival starts next week!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit your films now!</p>
+                  </div>
+              </div>
             <!--<button class="openbtn" onclick="openNav()">&rarr;</button>-->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
               <script src="./hamburger.js"></script>
               <script src="./dboriginals.js"></script>
               <script src="./logintoprofile.js"></script>
-              
+              <script src="./remote.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
         </main>
     </body>
 </html>

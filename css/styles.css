@@ -48,19 +48,21 @@ p {
   width: 150ch;
   margin-top: 0;
 }
-html {
+html, body {
   font-size: 62.5%;
+  height: 100%;
+}
+body {
+  background-color: rgb(17, 17, 17);
 }
 .container-dboriginals {
-  height: 100vh;
   display: grid;
   overflow-y: hidden; 
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 40px auto 40px;
   border: none;
-  background-color: rgb(17, 17, 17);
+  background-color: rgb(12, 12, 12);
   background-size: cover;
-  background-position-y: -37rem;
   background-repeat: no-repeat;
   background-attachment: fixed;
   grid-template-areas:
@@ -75,11 +77,10 @@ html {
   align-items: center;
   background: var(--color-accent);
   background: rgb(22, 22, 22);
-  /*box-shadow: 0 0 5px rgb(255, 0, 0);*/
-  border: none;
+  box-shadow: 0 0 5px rgb(0, 0, 0);
   height: 50px;
   width: 100%;
-  z-index: 2;
+  z-index: 4;
 }
 .content {
   grid-area: c;
@@ -123,7 +124,7 @@ html {
   justify-content: center;
   max-width: 600px;
   margin-left: auto;
-  margin-right: -180px;
+  margin-right: -300px;
 }
 .searchbar {
   height: 34px;
@@ -148,10 +149,11 @@ html {
   transition: all 0.2s ease;
   border: 100%;
   background-color: rgba(214, 214, 214, 0.8);
+  color: #3a3a3a;
   outline: 0;
 }
 .searchbar:focus::placeholder {
-  color: rgb(0, 0, 0);
+  color: rgb(44, 44, 44);
 }
 /*Nav Bar Icons*/
 .magnifyingglass {
@@ -184,7 +186,8 @@ html {
   color: aliceblue;
   height: 2.7rem;
   width: 8rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
   margin-left: auto;
   font-style: none;
   text-decoration: none;
@@ -202,7 +205,8 @@ html {
   border: none;
   height: 2.7rem;
   width: 8rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bolder;
 }
 .upload-button:hover {
   cursor: pointer;
@@ -256,18 +260,90 @@ html {
   margin-left: auto;
   margin-right: 20px;
 }
-.dboriginalsicon {
-  width: 23px;
-}
-.opensourceicon {
+.tvguideicon, .dboriginalsicon, .remote-icon, .chat-icon {
   margin-top: 6px;
-  width: 25px;
+  width: 23px;
+  height: 23px;
 }
-.dboriginalsicon, .opensourceicon {
+.dboriginalsicon, .tvguideicon, .remote-icon, .chat-icon {
   transition: transform 0.1s; 
 }
-.dboriginalsicon:hover, .opensourceicon:hover {
+.dboriginalsicon:hover, .tvguideicon:hover, .remote-icon:hover, .chat-icon:hover {
   transform: scale(1.08);
+}
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-text{
+  visibility: hidden;
+  width: 80px;
+  background-color: whitesmoke;
+  color: #000000;
+  font: "roboto", Arial, helvetica, sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%; 
+  left: 95%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.tooltip-text::after {
+  content: '';
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent transparent rgb(214, 214, 214) transparent;
+}
+
+.icon-wrapper:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip-text.hidden {
+  display: none;
+}
+.remote-container {
+  position: relative;
+  display: inline-block;
+}
+.remote-menu {
+  display: none; 
+  position: absolute;
+  width: 250px;
+  font: "roboto", Arial, helvetica, sans-serif;
+  font-size: 2rem;
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+  top: 125%;
+  left: 0%;
+  background-color: rgba(68, 68, 68, 0.7);
+  border: 2px solid rgb(39, 39, 39);
+  padding: 10px;
+  z-index: 1000;
+  transform: translateY(-80%);
+  transition: transform 0.1s ease-in-out, opacity 0.2s ease-in-out;
+  opacity: 0;
+  box-shadow: 15px 15px 30px rgb(0, 0, 0);
+  border-radius: .7rem .7rem .7rem .7rem;
+}
+.remote-menu.active {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+.remote-icon:hover{
+  cursor: pointer;
 }
 .hamburger-container {
   display: none;
@@ -294,7 +370,23 @@ html {
 .thumbnail {
   cursor: pointer;
   width: 1200px;
-  height: 1200px;
+  height: auto;
+}
+.power-button {
+  width: 100px;
+  height: auto;
+  top: 240px;
+  right: 33px;
+  position: absolute;
+  transition: transform 0.2s;
+  z-index: 3;
+}
+.power-button:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+.tv-container {
+  position: relative;
 }
 .video-container-dboriginals {
   display: flex;
@@ -330,6 +422,74 @@ html {
   margin-left: 40px;
   margin-top: 20px;
 }
+.trending-channels {
+  position: fixed;
+  left: 0;
+  top: 50px;
+  height: 100%; 
+  width: 250px;
+  background-color: rgba(32, 32, 32, 0.8); 
+  color: whitesmoke; 
+  font-family: 'Roboto', sans-serif; 
+  padding: 15px; 
+  z-index: 3; 
+  border-radius: 0 1px 1px 0; 
+}
+
+.trending-channels h3 {
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif; 
+  font-size: 2rem; 
+}
+
+.trending-channels ul {
+  list-style-type: none; 
+  padding-left: 0;
+}
+
+.trending-channels li {
+  margin: 30px 0; 
+  color: rgb(143, 143, 143);
+}
+.trending-channels h4 {
+  margin: 0; 
+  color: rgb(233, 43, 43);
+  font-size: 1.2rem;
+}
+.news-ticker {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000; 
+  color: #9c2121;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.4rem;
+  overflow: hidden;
+  z-index: 1000; 
+  padding: 13px 0;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(60%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.news-ticker p {
+  display: inline;
+  margin: 0;
+  padding-left: 100%; /* Initial offset for scrolling effect */
+}
+
 /*Sidebar *********************************************************************************************************************** */
 .sidebar {
   height: 95%;
@@ -372,6 +532,10 @@ html {
   margin-top: 200px;
   box-shadow: 15px 15px 30px black;
   border-radius: 1rem;
+}
+.login-body {
+  background-color: whitesmoke;
+  font-size: 100%;
 }
 .loginform {
   display: flex;
@@ -424,7 +588,7 @@ html {
 .login-side-image img {
   width: 475px;
   height: 498px;
-  border-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
 }
 #error-message-login {
   display: none;
@@ -508,7 +672,7 @@ html {
 .register-side-image img {
   width: 475px;
   height: 498px;
-  border-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
 }
 #error-message-register {
   display: none;
@@ -622,7 +786,7 @@ html {
 }
 .upload-side-image {
   display: flex;
-  border-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
 }
 .upload-side-image img {
   width: 600px;
@@ -649,9 +813,146 @@ html {
   cursor: pointer;
   transform:scale(1.06);
 }
-/*CSS for Dain Bramage Originals****************************************************************************************************** */
+/*TV Guide ***************************** */
+.container-tvguide {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  overflow-y: auto; 
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  border: none;
+  background-color: rgb(17, 17, 17);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c c"
+    "c c c c c c c c c c c c";
+}
+ .tvguide-page-title {
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  margin-top: 40px;
+  font-size: 4rem;
+}
+ .tvguide-container {
+  height: 100%;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+ }
+.channel-2-container, .channel-17-container, .channel-29-container, .channel-31-container, .channel-99-container {
+  height: 440px;
+  width: 1400px;
+  display: flex;
+  border: 1px solid black;
+  margin-top: 40px;
+  box-shadow: 15px 15px 30px rgb(0, 0, 0);
+  border-radius: 1rem;
+}
+.channel2-tvguide, .channel17-tvguide, .channel29-tvguide, .channel31-tvguide, .channel99-tvguide {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  width: 100%;
+  align-items: center;
+  background-color: rgb(20, 20, 20);
+  border-radius: 1rem 1rem 1rem 1rem;
+  text-decoration: none;
+}
+.channel2-tvguide a, .channel17-tvguide a, .channel29-tvguide a, .channel31-tvguide a, .channel99-tvguide a {
+  color: inherit;
+  text-decoration: none;
+}
+.channel2-tvguide h3:hover, .channel17-tvguide h3:hover, .channel29-tvguide h3:hover, .channel31-tvguide h3:hover, .channel99-tvguide h3:hover {
+background-color: #313131;
+cursor: pointer;
+}
+.channel31-tvguide {
+  margin-bottom: 20px;
+}
 
+/*Video Pages Database ***************************** */
 
+.video-page-outer-container {
+  border: none;
+  background-color: rgb(17, 17, 17);
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.video-page-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.video-page-container {
+  margin-top: 190px;
+  color: whitesmoke;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.video-page-container title {
+  margin-top: 0px;
+  font: "roboto", Arial, helvetica, sans-serif;
+  list-style: none;
+  font-size: 4rem;
+  font-weight: bolder;
+  justify-content: flex-start;
+  display: flex;
+}
+.video-page-container h4 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 40px;
+}
+.artwork-container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+.artwork img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.sayonara-artwork img, .halo-artwork img, .redbull-artwork img {
+  height: auto;
+  width: 600px;
+}
+.video-description {
+  margin: 0;
+}
+.horizontal-line {
+  width: 60%;
+  padding: 8px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  opacity: 50%;
+}
+.crew-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 20px;
+}
 
 /*CSS for Virtual Film Fest****************************************************************************************************** */
 
@@ -680,7 +981,6 @@ html {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  /* border: 3px solid rgb(58, 233, 14); */
 }
 .chatbox-container {
   height: 100%;
@@ -689,13 +989,11 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* position: relative; */
   background-size: contain;
   background-color:rgb(32, 32, 32);
   border-radius: 10px;
   overflow-y: scroll;
   overflow-x: none;
-  /* border: 3px solid rgb(241, 237, 6); */
 }
 .chatBox-heading {
   height: 5%;
@@ -719,9 +1017,6 @@ html {
   height: 3rem;
   width: 30rem;
   margin-left: 2rem;
-  /* align-self: flex-start;
-  margin-left: 2rem;
-  margin-top: 79rem; */
   border-radius: 10px;
   padding-left: 1rem;
   border: none;
@@ -837,7 +1132,7 @@ html {
 .dboriginalsicon {
   display: none;
 }
-  .opensourceicon {
+  .tvguideicon {
     display:none;
     border: 0px;
     color: rgba(235, 235, 235, 0.8);
@@ -880,7 +1175,7 @@ html {
 .login-button-small:hover {
   cursor: pointer;
 }
-.opensource-button-small {
+.tvguide-button-small {
   height: 30px;
   display: inline-block;
   border: none;
@@ -893,7 +1188,7 @@ html {
   overflow: hidden;
   margin-top: 30px;
 }
-.opensource-button-small {
+.tvguide-button-small {
   cursor: pointer;
 }
   .hamburger-button{
@@ -1010,9 +1305,20 @@ html {
 .dboriginalsicon {
   width: 23px;
 }
-.opensourceicon {
+.tvguideicon {
   margin-top: 6px;
   width: 25px;
 }
+.thumbnail {
+  width: 800px;
+  height: 800px;
+}
+}
 
+/* Medium screens (Laptops) */
+@media (min-width: 1401px) and (max-width: 2000px) {
+  .thumbnail {
+    width: 1000px;
+    height: 1000px;
+  }
 }
