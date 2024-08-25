@@ -80,23 +80,22 @@
                         </div>
                       </div>
             </div>
-            <!--<div id="mySidebar" class="sidebar">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            </div>-->
               <main class="content">
                 <div class="video-container-dboriginals" id="video-container">
                   <div class="tv-container">
-                  <img class="thumbnail" src="images/Dain_Bramage_Home_Screen_V3.svg" alt="Click anywhere to begin...">
-                  <img class="power-button" src="images/DB_Power_Button.svg" alt="Power Button">
+                  <!--<img class="thumbnail" src="images/Dain_Bramage_Home_Screen_V3.svg" alt="Click anywhere to begin...">
+                  <img class="power-button" src="images/DB_Power_Button.svg" alt="Power Button"-->
                 </div>
-                  <video class= myvideo id="myvideo" preload="metadata">
+                  <video class= myvideo id="myvideo" preload="metadata" muted autoplay>
                   </video>
                   
                   <div class="db-originals-next-button" id="next-button">
                     <div class="channelnumber"><span id="channel-number"></span></div>
                   </div>
                 </div>
-                <div class="trending-channels">
+                <div class="trending-container">
+                  <button id="toggle-button-left">&#9776;</button>
+                <div id="trending-channels-left">
                   <h3>Trending Channels <br><br></h3>
                   <ul>
                       <li>Channel 2: Dain Bramage <br><h4>27.4k watching</h4></li>
@@ -111,16 +110,27 @@
                       <li>Channel 199: Documentaries<br><h4>2.6k watching</h4></li>
                   </ul>
               </div>
+            </div>
+            <div class="chat-container">
+              <button id="toggle-button-right">&#9776;</button>
+            <div id="chat-box-right">
+              <h3>Chat<br><br></h3>
+          </div>
+        </div>
                 <div class="news-ticker">
                   <div class="ticker">
-                      <p>Breaking News: Dain Bramage TV launches new features! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                        New Festival starts next week!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit your films now!</p>
+                      <p>Welcome to Dain Bramage TV &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click anywhere on screen to navigate channels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press 'm' to mute/unmute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Want your own channel? Submit your work to us for review.</p>
                   </div>
               </div>
             <!--<button class="openbtn" onclick="openNav()">&rarr;</button>-->
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
               <script src="./hamburger.js"></script>
-              <script src="./dboriginals.js"></script>
+              <script src="./leftToggle.js"></script>
+              <script src="./rightToggle.js"></script>
+              <script src="./dbOriginalsAuto.js"></script>
               <script src="./logintoprofile.js"></script>
               <script src="./remote.js"></script>
               <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
